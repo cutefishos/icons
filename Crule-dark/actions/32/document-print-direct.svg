@@ -5,7 +5,7 @@
        type="text/css"
        id="current-color-scheme">
       .ColorScheme-Text {
-        color:#ffffff;
+        color:#dedede;
       }
       .ColorScheme-Highlight {
         color:#3daee9;
