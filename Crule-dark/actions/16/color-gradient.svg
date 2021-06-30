@@ -27,7 +27,7 @@
        id="current-color-scheme"
        type="text/css">
       .ColorScheme-Text {
-        color:#dedede;
+        color:#ffffff;
       }
       </style>
     <linearGradient
