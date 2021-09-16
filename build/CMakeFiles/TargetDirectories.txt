@@ -1,6 +1,0 @@
-/home/reion/Cutefish/icons/build/CMakeFiles/install/strip.dir
-/home/reion/Cutefish/icons/build/CMakeFiles/install/local.dir
-/home/reion/Cutefish/icons/build/CMakeFiles/install.dir
-/home/reion/Cutefish/icons/build/CMakeFiles/list_install_components.dir
-/home/reion/Cutefish/icons/build/CMakeFiles/rebuild_cache.dir
-/home/reion/Cutefish/icons/build/CMakeFiles/edit_cache.dir
