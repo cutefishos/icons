@@ -5,7 +5,8 @@ Maintainer: CutefishOS <support@cutefishos.com>
 Standards-Version: 4.5.1
 Build-Depends:
     debhelper-compat (= 12),
-    gtk-update-icon-cache
+    gtk-update-icon-cache,
+    cmake
 Rules-Requires-Root: binary-targets
 Homepage: https://cutefishos.com
 
