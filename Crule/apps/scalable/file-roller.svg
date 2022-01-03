@@ -1,4 +1,14 @@
-<svg width="64" height="64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
  <defs>
   <filter id="filter1225" x="-.01728" y="-.06911" width="1.0346" height="1.1382" color-interpolation-filters="sRGB">
    <feGaussianBlur stdDeviation="0.4032"/>
@@ -16,6 +26,6 @@
   <path d="m14.051 12.327c-1.108 0-2 0.89199-2 2v2h38v-2c0-1.108-0.89199-2-2-2z" opacity=".8"/>
   <path d="m18.051 8.3273c-1.108 0-2 0.89199-2 2h30c0-1.108-0.89199-2-2-2z" opacity=".3"/>
  </g>
- <rect x="31" y="18" width="1.9994" height="13" ry="0" opacity=".2" stroke-width="3.0862" paint-order="markers stroke fill"/>
+ <rect x="31" y="18" width="1.9994" height="13" ry="0" opacity=".1" stroke-width="3.0862" paint-order="markers stroke fill"/>
  <path d="m32.002 30.001a4.0064 4.0064 0 0 0-4.0026 3.9988v8.0014a4.0064 4.0064 0 0 0 4.0026 3.9988 4.0064 4.0064 0 0 0 3.9988-3.9988v-8.0014a4.0064 4.0064 0 0 0-3.9988-3.9988zm0 1.9994c1.1036 0 1.9994 0.7975 1.9994 1.9994 0 1.0016-0.89576 2.0032-2.0032 2.0032a2.0712 2.0712 0 0 1-1.9994-2.0032c0-1.2019 0.89954-2.0032 2.0032-2.0032zm0 5.9982a2.0032 2.0032 0 0 1 1.9994 2.0032v1.9994a2.0032 2.0032 0 0 1-4.0026 0v-2.0032a2.0032 2.0032 0 0 1 2.0032-1.9994z" fill="#fff" stroke-width="3.7796"/>
 </svg>
