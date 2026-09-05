@@ -1,17 +1,23 @@
-# Icons
+# Cutefish Icon Theme
 
-System default icon theme, based on [vinceliuice](https://github.com/vinceliuice)'s whitesur.
+Based on [Colloid-icon-theme](https://github.com/vinceliuice/Colloid-icon-theme).
 
-## Build and Install
+## Build and install
 
-```bash
-mkdir build
-cd build
-cmake ..
-make
-sudo make install
+Configure and install the theme with CMake:
+
+```sh
+cmake -S . -B build
+sudo cmake --install build
 ```
 
-## License
+The default installation directory is `/usr/share/icons`. Set either
+`CMAKE_INSTALL_PREFIX` or `INSTALL_PREFIX` to choose another prefix:
 
-This project has been licensed by GPLv3.
+```sh
+cmake -S . -B build -DCMAKE_INSTALL_PREFIX="$HOME/.local"
+cmake --install build
+```
+
+The installation provides `Cutefish`, `Cutefish-Light`, and `Cutefish-Dark`
+under `share/icons`.

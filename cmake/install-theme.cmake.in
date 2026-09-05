@@ -1,0 +1,255 @@
+set(_cutefish_source_dir "@CMAKE_CURRENT_SOURCE_DIR@")
+set(_cutefish_install_root
+    "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/@CUTEFISH_ICON_INSTALL_DIR@")
+set(_cutefish_theme_name "@CUTEFISH_THEME_NAME@")
+
+function(_cutefish_copy_contents source_dir destination_dir)
+  file(MAKE_DIRECTORY "${destination_dir}")
+  file(GLOB _source_entries RELATIVE "${source_dir}" "${source_dir}/*")
+  foreach(_source_entry IN LISTS _source_entries)
+    if(_source_entry STREQUAL ".directory")
+      continue()
+    endif()
+    set(_source_path "${source_dir}/${_source_entry}")
+    set(_destination_path "${destination_dir}/${_source_entry}")
+    if(IS_DIRECTORY "${_source_path}" AND NOT IS_SYMLINK "${_source_path}")
+      _cutefish_copy_contents("${_source_path}" "${_destination_path}")
+    else()
+      file(REMOVE_RECURSE "${_destination_path}")
+      message(STATUS "Installing: ${_destination_path}")
+      file(COPY "${_source_path}" DESTINATION "${destination_dir}")
+    endif()
+  endforeach()
+endfunction()
+
+function(_cutefish_copy_index destination_dir variant_name)
+  file(READ "${_cutefish_source_dir}/src/index.theme" _index_theme)
+  string(REPLACE
+    "Name=${_cutefish_theme_name}"
+    "Name=${variant_name}"
+    _index_theme
+    "${_index_theme}"
+  )
+  file(WRITE "${destination_dir}/index.theme" "${_index_theme}")
+endfunction()
+
+function(_cutefish_replace_in_svg_tree directory old_color new_color)
+  file(GLOB_RECURSE _svg_files LIST_DIRECTORIES false
+       "${directory}/*.svg")
+  find_program(_sed sed)
+  if(NOT _sed)
+    message(FATAL_ERROR "The sed utility is required to install Cutefish")
+  endif()
+  foreach(_svg_file IN LISTS _svg_files)
+    if(IS_SYMLINK "${_svg_file}")
+      continue()
+    endif()
+    file(READ "${_svg_file}" _svg_contents)
+    string(FIND "${_svg_contents}" "${old_color}" _color_position)
+    if(NOT _color_position EQUAL -1)
+      execute_process(
+        COMMAND "${_sed}" -i "s/${old_color}/${new_color}/g" "${_svg_file}"
+        RESULT_VARIABLE _sed_result
+      )
+      if(NOT _sed_result EQUAL 0)
+        message(FATAL_ERROR "Could not recolor ${_svg_file}")
+      endif()
+    endif()
+  endforeach()
+endfunction()
+
+function(_cutefish_create_symlink target link_name)
+  file(CREATE_LINK "${target}" "${link_name}" SYMBOLIC)
+endfunction()
+
+function(_cutefish_create_scaled_links theme_dir)
+  foreach(_directory IN ITEMS
+      actions apps categories devices emblems mimetypes places status)
+    _cutefish_create_symlink(
+      "${_directory}" "${theme_dir}/${_directory}@2x"
+    )
+    _cutefish_create_symlink(
+      "${_directory}" "${theme_dir}/${_directory}@3x"
+    )
+  endforeach()
+endfunction()
+
+function(_cutefish_update_cache theme_dir)
+  find_program(_gtk_update_icon_cache gtk-update-icon-cache)
+  if(_gtk_update_icon_cache)
+    execute_process(
+      COMMAND "${_gtk_update_icon_cache}" "${theme_dir}"
+      RESULT_VARIABLE _cache_result
+      OUTPUT_QUIET
+      ERROR_VARIABLE _cache_error
+    )
+    if(NOT _cache_result EQUAL 0)
+      message(WARNING
+        "Could not update the icon cache for ${theme_dir}: ${_cache_error}")
+    endif()
+  endif()
+endfunction()
+
+set(_cutefish_base "${_cutefish_install_root}/${_cutefish_theme_name}")
+set(_cutefish_light "${_cutefish_install_root}/${_cutefish_theme_name}-Light")
+set(_cutefish_dark "${_cutefish_install_root}/${_cutefish_theme_name}-Dark")
+
+message(STATUS "Installing Cutefish icon themes to ${_cutefish_install_root}")
+
+foreach(_theme_dir IN ITEMS _cutefish_base _cutefish_light _cutefish_dark)
+  file(REMOVE_RECURSE "${${_theme_dir}}")
+endforeach()
+
+# Light theme: the full artwork with the redesigned icon set.
+file(MAKE_DIRECTORY "${_cutefish_light}")
+_cutefish_copy_index("${_cutefish_light}" "${_cutefish_theme_name}-Light")
+foreach(_directory IN ITEMS
+    actions apps categories devices emblems mimetypes places status)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/${_directory}"
+    "${_cutefish_light}/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS
+    actions apps categories devices emblems mimetypes places status)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/${_directory}"
+    "${_cutefish_light}/${_directory}"
+  )
+endforeach()
+_cutefish_create_scaled_links("${_cutefish_light}")
+
+# Dark theme: use the dark-specific artwork and share scalable artwork with
+# the light theme, matching the original Cutefish variant layout.
+file(MAKE_DIRECTORY "${_cutefish_dark}")
+_cutefish_copy_index("${_cutefish_dark}" "${_cutefish_theme_name}-Dark")
+_cutefish_copy_contents(
+  "${_cutefish_source_dir}/src/actions"
+  "${_cutefish_dark}/actions"
+)
+foreach(_directory IN ITEMS 22 symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/apps/${_directory}"
+    "${_cutefish_dark}/apps/${_directory}"
+  )
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/categories/${_directory}"
+    "${_cutefish_dark}/categories/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/emblems/${_directory}"
+    "${_cutefish_dark}/emblems/${_directory}"
+  )
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/mimetypes/${_directory}"
+    "${_cutefish_dark}/mimetypes/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 16 22 24 32 symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/devices/${_directory}"
+    "${_cutefish_dark}/devices/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 16 22 24 scalable symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/places/${_directory}"
+    "${_cutefish_dark}/places/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 16 22 24 32 symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/src/status/${_directory}"
+    "${_cutefish_dark}/status/${_directory}"
+  )
+endforeach()
+_cutefish_copy_contents(
+  "${_cutefish_source_dir}/dark"
+  "${_cutefish_dark}/places/scalable"
+)
+foreach(_directory IN ITEMS
+    actions/16 actions/22 actions/24 devices/16 devices/22 devices/24
+    places/16 places/22 places/24 status/16 status/22 status/24
+    actions/32 devices/32 status/32 apps/22 categories/22)
+  _cutefish_replace_in_svg_tree(
+    "${_cutefish_dark}/${_directory}" "#363636" "#dedede"
+  )
+endforeach()
+foreach(_directory IN ITEMS
+    actions/symbolic apps/symbolic categories/symbolic devices/symbolic
+    emblems/symbolic mimetypes/symbolic places/symbolic status/symbolic)
+  _cutefish_replace_in_svg_tree(
+    "${_cutefish_dark}/${_directory}" "#363636" "#dedede"
+  )
+endforeach()
+
+foreach(_directory IN ITEMS actions)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/${_directory}"
+    "${_cutefish_dark}/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 16 22 24 32 symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/devices/${_directory}"
+    "${_cutefish_dark}/devices/${_directory}"
+  )
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/status/${_directory}"
+    "${_cutefish_dark}/status/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 16 22 24 scalable symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/places/${_directory}"
+    "${_cutefish_dark}/places/${_directory}"
+  )
+endforeach()
+foreach(_directory IN ITEMS 22 symbolic)
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/apps/${_directory}"
+    "${_cutefish_dark}/apps/${_directory}"
+  )
+  _cutefish_copy_contents(
+    "${_cutefish_source_dir}/links/categories/${_directory}"
+    "${_cutefish_dark}/categories/${_directory}"
+  )
+endforeach()
+_cutefish_copy_contents(
+  "${_cutefish_source_dir}/links/emblems/symbolic"
+  "${_cutefish_dark}/emblems/symbolic"
+)
+_cutefish_copy_contents(
+  "${_cutefish_source_dir}/links/mimetypes/symbolic"
+  "${_cutefish_dark}/mimetypes/symbolic"
+)
+
+foreach(_link IN ITEMS
+    apps/scalable devices/scalable categories/32 emblems/16 emblems/22
+    mimetypes/scalable)
+  _cutefish_create_symlink(
+    "../../${_cutefish_theme_name}-Light/${_link}"
+    "${_cutefish_dark}/${_link}"
+  )
+endforeach()
+file(MAKE_DIRECTORY "${_cutefish_base}")
+_cutefish_copy_index("${_cutefish_base}" "${_cutefish_theme_name}")
+foreach(_directory IN ITEMS
+    apps actions devices emblems places categories mimetypes)
+  _cutefish_create_symlink(
+    "../${_cutefish_theme_name}-Light/${_directory}"
+    "${_cutefish_base}/${_directory}"
+  )
+endforeach()
+_cutefish_create_symlink(
+  "../${_cutefish_theme_name}-Dark/status"
+  "${_cutefish_base}/status"
+)
+_cutefish_create_scaled_links("${_cutefish_base}")
+_cutefish_create_scaled_links("${_cutefish_dark}")
+
+foreach(_theme_dir IN ITEMS _cutefish_base _cutefish_light _cutefish_dark)
+  _cutefish_update_cache("${${_theme_dir}}")
+endforeach()
