@@ -1,0 +1,17 @@
+Source: cutefish-icon-theme
+Section: x11
+Priority: optional
+Maintainer: CutefishOS <support@cutefishos.com>
+Standards-Version: 4.6.2
+Build-Depends:
+    cmake,
+    debhelper-compat (= 13),
+    gtk-update-icon-cache
+Rules-Requires-Root: no
+Homepage: https://cutefishos.com
+
+Package: cutefish-icon-theme
+Architecture: all
+Depends: ${misc:Depends}
+Description: CutefishOS icon theme
+ CutefishOS icon theme based on Colloid-icon-theme.

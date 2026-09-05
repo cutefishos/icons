@@ -1,0 +1,6 @@
+cutefish-icon-theme (1.0.0-1) unstable; urgency=medium
+
+  * Replace the legacy icon set with the Colloid-based theme.
+  * Add CMake installation and Debian packaging support.
+
+ -- CutefishOS <support@cutefishos.com>  Sat, 05 Sep 2026 00:00:00 -0400
