@@ -36,10 +36,6 @@ endfunction()
 function(_cutefish_replace_in_svg_tree directory old_color new_color)
   file(GLOB_RECURSE _svg_files LIST_DIRECTORIES false
        "${directory}/*.svg")
-  find_program(_sed sed)
-  if(NOT _sed)
-    message(FATAL_ERROR "The sed utility is required to install Cutefish")
-  endif()
   foreach(_svg_file IN LISTS _svg_files)
     if(IS_SYMLINK "${_svg_file}")
       continue()
@@ -47,13 +43,9 @@ function(_cutefish_replace_in_svg_tree directory old_color new_color)
     file(READ "${_svg_file}" _svg_contents)
     string(FIND "${_svg_contents}" "${old_color}" _color_position)
     if(NOT _color_position EQUAL -1)
-      execute_process(
-        COMMAND "${_sed}" -i "s/${old_color}/${new_color}/g" "${_svg_file}"
-        RESULT_VARIABLE _sed_result
-      )
-      if(NOT _sed_result EQUAL 0)
-        message(FATAL_ERROR "Could not recolor ${_svg_file}")
-      endif()
+      string(REPLACE "${old_color}" "${new_color}" _svg_contents
+             "${_svg_contents}")
+      file(WRITE "${_svg_file}" "${_svg_contents}")
     endif()
   endforeach()
 endfunction()
