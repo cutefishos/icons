@@ -24,5 +24,11 @@ under `share/icons`.
 
 The four `src/actions/symbolic/window-*-symbolic.svg` controls are adapted from
 FishUI's `src/images/light/` artwork (CutefishOS Team, GPL-3.0-or-later), revision
-`4692189f668e0921582337a0b7bdedd4010826c4`. Their 24×24 geometry and paths are
-unchanged; only the fill is converted to symbolic foreground for GTK recoloring.
+`4692189f668e0921582337a0b7bdedd4010826c4`. The original paths are translated by
+(-4, -4) onto a 16×16 canvas, matching GTK/Chromium's standard icon size without
+shrinking the artwork. Symbolic foreground allows GTK recoloring. No custom GTK
+CSS is required; select the installed theme with:
+
+```sh
+gsettings set org.gnome.desktop.interface icon-theme Cutefish
+```
