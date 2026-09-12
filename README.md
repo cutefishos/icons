@@ -21,3 +21,8 @@ cmake --install build
 
 The installation provides `Cutefish`, `Cutefish-Light`, and `Cutefish-Dark`
 under `share/icons`.
+
+The four `src/actions/symbolic/window-*-symbolic.svg` controls are adapted from
+FishUI's `src/images/light/` artwork (CutefishOS Team, GPL-3.0-or-later), revision
+`4692189f668e0921582337a0b7bdedd4010826c4`. Their 24×24 geometry and paths are
+unchanged; only the fill is converted to symbolic foreground for GTK recoloring.
