@@ -1,0 +1,51 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M47 3.968H17.002C9.821 3.968 4 9.79 4 16.97v29.998C4 54.149 9.821 59.97 17.002 59.97H47c7.181 0 13.002-5.821 13.002-13.002V16.97C60.002 9.79 54.181 3.968 47 3.968Z" fill="#F9F9F9"/>
+  <path opacity=".1" d="M3.998 45.998v1.001c0 7.202 5.801 13.003 13.004 13.003h29.996c7.203 0 13.004-5.801 13.004-13.003v-1.001C60.002 53.201 54.201 59 46.998 59H17.002C9.799 59 3.998 53.201 3.998 45.998Z" fill="#000"/>
+  <path opacity=".5" d="M3.998 18.004v-1C3.998 9.801 9.799 4 17.002 4h29.996c7.203 0 13.004 5.801 13.004 13.004v1C60.002 10.801 54.201 5.002 46.998 5.002H17.002c-7.203 0-13.004 5.799-13.004 13.002Z" fill="#FFF"/>
+  <g filter="url(#shadow)">
+    <path d="M43.051 31.393H21.663C20.192 31.393 19 32.483 19 33.827v12.739C19 47.91 20.192 49 21.663 49h21.388c1.471 0 2.663-1.09 2.663-2.434v-12.74c0-1.343-1.192-2.433-2.663-2.433Z" fill="url(#drawer)"/>
+    <path d="M43.051 15H21.663C20.192 15 19 16.09 19 17.434v27.918c0 1.344 1.192 2.434 2.663 2.434h21.388c1.471 0 2.663-1.09 2.663-2.434V17.434C45.714 16.09 44.522 15 43.051 15Z" fill="#F6F5F4"/>
+    <path d="M43.286 16.821H21.428c-.67 0-1.214.544-1.214 1.215v27.32c0 .672.544 1.215 1.214 1.215h21.858c.67 0 1.214-.543 1.214-1.214V18.036c0-.67-.544-1.215-1.214-1.215Z" fill="#1A5FB4"/>
+    <path d="M43.286 16.214H21.428c-.67 0-1.214.544-1.214 1.215v27.32c0 .671.544 1.215 1.214 1.215h21.858c.67 0 1.214-.544 1.214-1.215v-27.32c0-.671-.544-1.215-1.214-1.215Z" fill="#3584E4"/>
+    <path d="M44.5 25.929H20.214v.607H44.5v-.607ZM44.5 35.643H20.214v.607H44.5v-.607Z" fill="#1C71D8"/>
+    <g>
+      <path d="M29.625 19.857h5.464c.505 0 .911.304.911.911v1.518h-1.205l-.01-1.215h-4.857l.01 1.215h-1.224v-1.518c0-.505.406-.91.91-.91Z" fill="url(#handleSide)"/>
+      <path opacity=".1" d="M35.545 21.679h-6.376a.455.455 0 0 0-.455.455v.303c0 .252.204.456.455.456h6.376a.455.455 0 0 0 .455-.456v-.303a.455.455 0 0 0-.455-.455Z" fill="#000"/>
+      <path d="M29.625 21.071a.91.91 0 0 0-.911.911v.304h1.214v-.607h4.857v.607H36v-.304a.91.91 0 0 0-.911-.91h-5.464Z" fill="url(#handleTop)"/>
+      <path opacity=".1" d="M34.786 21.679h-4.858v.607h4.858v-.607Z" fill="#000"/>
+    </g>
+    <g transform="translate(0 9.714)">
+      <path d="M29.625 19.857h5.464c.505 0 .911.304.911.911v1.518h-1.205l-.01-1.215h-4.857l.01 1.215h-1.224v-1.518c0-.505.406-.91.91-.91Z" fill="url(#handleSide)"/>
+      <path opacity=".1" d="M35.545 21.679h-6.376a.455.455 0 0 0-.455.455v.303c0 .252.204.456.455.456h6.376a.455.455 0 0 0 .455-.456v-.303a.455.455 0 0 0-.455-.455Z" fill="#000"/>
+      <path d="M29.625 21.071a.91.91 0 0 0-.911.911v.304h1.214v-.607h4.857v.607H36v-.304a.91.91 0 0 0-.911-.91h-5.464Z" fill="url(#handleTop)"/>
+      <path opacity=".1" d="M34.786 21.679h-4.858v.607h4.858v-.607Z" fill="#000"/>
+    </g>
+    <g transform="translate(0 19.429)">
+      <path d="M29.625 19.857h5.464c.505 0 .911.304.911.911v1.518h-1.205l-.01-1.215h-4.857l.01 1.215h-1.224v-1.518c0-.505.406-.91.91-.91Z" fill="url(#handleSide)"/>
+      <path opacity=".1" d="M35.545 21.679h-6.376a.455.455 0 0 0-.455.455v.303c0 .252.204.456.455.456h6.376a.455.455 0 0 0 .455-.456v-.303a.455.455 0 0 0-.455-.455Z" fill="#000"/>
+      <path d="M29.625 21.071a.91.91 0 0 0-.911.911v.304h1.214v-.607h4.857v.607H36v-.304a.91.91 0 0 0-.911-.91h-5.464Z" fill="url(#handleTop)"/>
+      <path opacity=".1" d="M34.786 21.679h-4.858v.607h4.858v-.607Z" fill="#000"/>
+    </g>
+  </g>
+  <defs>
+    <filter id="shadow" x="15" y="15" width="34.714" height="42" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="background"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="alpha"/>
+      <feOffset dy="4"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feComposite in2="alpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"/>
+      <feBlend in2="background" result="dropShadow"/>
+      <feBlend in="SourceGraphic" in2="dropShadow"/>
+    </filter>
+    <linearGradient id="drawer" x1="19" y1="32.607" x2="45.714" y2="32.607" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DEDDDA"/><stop offset=".045" stop-color="#EEEEEC"/><stop offset=".091" stop-color="#DEDDDA"/><stop offset=".909" stop-color="#DEDDDA"/><stop offset=".955" stop-color="#EEEEEC"/><stop offset="1" stop-color="#C0BFBC"/>
+    </linearGradient>
+    <linearGradient id="handleSide" x1="28.714" y1="25.929" x2="36" y2="25.929" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DEDDDA"/><stop offset=".045" stop-color="#EEEEEC"/><stop offset=".091" stop-color="#DEDDDA"/><stop offset=".909" stop-color="#DEDDDA"/><stop offset=".955" stop-color="#EEEEEC"/><stop offset="1" stop-color="#C0BFBC"/>
+    </linearGradient>
+    <linearGradient id="handleTop" x1="32.661" y1="22.286" x2="32.661" y2="21.071" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9A9996"/><stop offset="1" stop-color="#C0BFBC"/>
+    </linearGradient>
+  </defs>
+</svg>
