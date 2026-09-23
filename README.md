@@ -19,8 +19,7 @@ cmake -S . -B build -DCMAKE_INSTALL_PREFIX="$HOME/.local"
 cmake --install build
 ```
 
-The installation provides `Cutefish`, `Cutefish-Light`, and `Cutefish-Dark`
-under `share/icons`.
+The installation provides the `Cutefish` theme under `share/icons`.
 
 The four `src/actions/symbolic/window-*-symbolic.svg` controls are adapted from
 FishUI's `src/images/light/` artwork (CutefishOS Team, GPL-3.0-or-later), revision
