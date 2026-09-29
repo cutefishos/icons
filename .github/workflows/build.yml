@@ -18,6 +18,14 @@ jobs:
         run: apt-get update -y
       - name: Install build tools
         run: apt-get install -y equivs devscripts lintian build-essential cmake debhelper gtk-update-icon-cache
+      - name: Checkout packaging
+        uses: actions/checkout@v4
+        with:
+          repository: cutefishos/packaging
+          ref: main
+          path: packaging
+      - name: Add the Debian packaging
+        run: mv packaging/debian/icons/debian . && rm -rf packaging
       - name: Install build dependencies
         run: mk-build-deps -i -t "apt-get --yes" -r
       - name: Build package
