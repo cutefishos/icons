@@ -1,7 +1,6 @@
 # Cutefish Icon Theme
 
 Based on [Colloid-icon-theme](https://github.com/vinceliuice/Colloid-icon-theme).
-The window control symbolics are adapted from FishUI's artwork.
 
 ## Build and install
 
