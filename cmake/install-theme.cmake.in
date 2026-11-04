@@ -39,7 +39,7 @@ endfunction()
 
 function(_cutefish_create_scaled_links theme_dir)
   foreach(_directory IN ITEMS
-      actions apps categories devices emblems mimetypes places status)
+      actions apps devices emblems mimetypes places status)
     _cutefish_create_symlink(
       "${_directory}" "${theme_dir}/${_directory}@2x"
     )
@@ -76,14 +76,14 @@ endforeach()
 file(MAKE_DIRECTORY "${_cutefish_theme}")
 _cutefish_copy_index("${_cutefish_theme}" "${_cutefish_theme_name}")
 foreach(_directory IN ITEMS
-    actions apps categories devices emblems mimetypes places status)
+    actions apps devices emblems mimetypes places status)
   _cutefish_copy_contents(
     "${_cutefish_source_dir}/src/${_directory}"
     "${_cutefish_theme}/${_directory}"
   )
 endforeach()
 foreach(_directory IN ITEMS
-    actions apps categories devices emblems mimetypes places status)
+    actions apps devices emblems mimetypes places status)
   _cutefish_copy_contents(
     "${_cutefish_source_dir}/links/${_directory}"
     "${_cutefish_theme}/${_directory}"
