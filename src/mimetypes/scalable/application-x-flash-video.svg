@@ -1,14 +1,7 @@
-<svg width="64" height="64" version="1.1" xmlns="http://www.w3.org/2000/svg">
- <defs>
-  <filter id="a" x="-.039001" y="-.033428" width="1.078" height="1.0669" color-interpolation-filters="sRGB">
-   <feGaussianBlur stdDeviation="0.20637525"/>
-  </filter>
- </defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" version="1.1">
  <g fill-rule="evenodd">
-  <path transform="scale(3.7796)" d="m3.4395 1.3543c-0.73289 0-1.3229 0.59001-1.3229 1.3229v12.171c0 0.73289 0.59001 1.3229 1.3229 1.3229h10.054c0.73289 0 1.3229-0.59001 1.3229-1.3229v-10.319l-3.175-3.175z" filter="url(#a)" opacity=".15" stroke-width=".26458" style="paint-order:stroke fill markers"/>
-  <path d="m13 4.0015c-2.77 0-5 2.2299-5 5v46.002c0 2.7699 2.23 5 5 5h38c2.77 0 5-2.2299 5-5v-39.002l-12-11.999z" fill="#f35450" stroke-width="3.7796" style="paint-order:stroke fill markers"/>
-  <path d="m55.999 16-12-12v6.9998c0 2.77 2.23 5 5 5z" fill="#fff" opacity=".35" stroke-width="3.7796" style="paint-order:stroke fill markers"/>
+  <path d="M10 15.2C10 11.2796 10 9.3194 10.763 7.8221C11.4341 6.5049 12.5049 5.4341 13.8221 4.763C15.3194 4 17.2796 4 21.2 4L38.5 4C39.55 4 40.6 4 41.795 4.495C42.9899 4.9899 43.7324 5.7324 44.4749 6.4749L51.5251 13.5251C52.2676 14.2676 53.0101 15.0101 53.505 16.205C54 17.4 54 18.45 54 19.5L54 48.8C54 52.7204 54 54.6805 53.237 56.1779C52.5659 57.4951 51.4951 58.5659 50.1779 59.237C48.6805 60 46.7204 60 42.8 60L21.2 60C17.2796 60 15.3194 60 13.8221 59.237C12.5049 58.5659 11.4341 57.4951 10.763 56.1779C10 54.6805 10 52.7204 10 48.8Z" fill="#f35450" style="paint-order:stroke fill markers" />
+  <path d="M51.5251 13.5251L44.4749 6.4749C43.7758 5.7758 43.0768 5.0768 42 4.5843L42 11C42 13.77 44.23 16 47 16L53.4157 16C52.9232 14.9232 52.2242 14.2242 51.5251 13.5251Z" fill="#fff" opacity=".35" style="paint-order:stroke fill markers" />
  </g>
- <path d="m19 43.604v6.396s10.285 1.514 14.812-12.198h8.188v-6h-5.726s2.174-7 7.726-7v-6s-8.64-1.99-14.192 12.413c-4.801 14.105-10.808 12.389-10.808 12.389z" color="#000000" fill="#fff" overflow="visible"/>
- <path d="m43.998 11v0.58399c0 3.0009 2.23 5.4162 5 5.4162h6.9998l5.37e-4 -1.0002-7.0006 1.89e-4c-2.77 7.5e-5 -5-2.23-5-5z" fill-rule="evenodd" opacity=".1" stroke-width="3.9338" style="paint-order:stroke fill markers"/>
-</svg>
+ <path d="m19 43.604v6.396s10.285 1.514 14.812-12.198h8.188v-6h-5.726s2.174-7 7.726-7v-6s-8.64-1.99-14.192 12.413c-4.801 14.105-10.808 12.389-10.808 12.389z" color="#000000" fill="#fff" overflow="visible" transform="matrix(0.916667 0 0 0.916667 2.666667 2.666667)" />
+ </svg>
